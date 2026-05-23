@@ -1,8 +1,8 @@
 # Circular buffer library
 
-This repository contatins implementation of a circular buffer. 
+This repository contains implementation of a circular buffer. 
 
-The target usage platform is embedded devices. The implementation used C++ templates, outputs and receives data via raw pointers and does not use dynamic memory.
+The target usage platform is embedded devices. The implementation uses C++ templates, outputs and receives data via raw pointers and does not use dynamic memory.
 
 Even though it is written on C++ it can be easily adapted for C. It is also possible to use this library (if you need to) on other platforms, such as devices operated by Linux, Windows and etc.
 
