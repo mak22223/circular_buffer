@@ -39,6 +39,7 @@ jobs:
   
     - name: Coverage
       run: |
+        python3 -m pip install gcovr
         make coverage-ci
 
     - name: Upload to Codecov
