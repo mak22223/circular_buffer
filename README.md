@@ -25,4 +25,4 @@ The implementation has its funtionality tested via unit tests. The implementatio
 
 # License
 
-???
+This project is licensed under the MIT License.
