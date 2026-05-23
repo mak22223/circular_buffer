@@ -1,11 +1,15 @@
 BUILD_DIR = build
+CMAKE_ARGS =
 
-all: build_test test
+all: build build_test test
 
-build_test:
+build_test: CMAKE_ARGS += -DBUILD_TESTING=ON
+build_test: build
+
+build:
 	mkdir -p $(BUILD_DIR) \
 	&& cd build \
-	&& cmake .. \
+	&& cmake .. $(CMAKE_ARGS) \
 	&& cmake --build . -j$$(nproc --ignore=1)
 
 test:
