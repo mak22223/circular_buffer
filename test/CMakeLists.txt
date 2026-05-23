@@ -1,3 +1,5 @@
+option(ENABLE_COVERAGE "Enable coverage" OFF)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -14,5 +16,17 @@ target_link_libraries(circular_buffer_test PRIVATE
   GTest::gtest
   GTest::gtest_main
 )
+
+if(ENABLE_COVERAGE)
+  target_compile_options(circular_buffer_test PRIVATE
+    -O0
+    -g
+    --coverage
+  )
+
+  target_link_options(circular_buffer_test PRIVATE
+    --coverage
+  )
+endif()
 
 add_test(circular_buffer_tests circular_buffer_test)
