@@ -1,8 +1,8 @@
 BUILD_DIR = build
 
-all: build test
+all: build_test test
 
-build:
+build_test:
 	mkdir -p $(BUILD_DIR) \
 	&& cd build \
 	&& cmake .. \

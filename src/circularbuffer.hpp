@@ -12,7 +12,7 @@ public:
   {
     size_t available = _available();
 
-    if (available < len) {
+    if (available < len || !buf) {
       return false;
     }
 
@@ -38,9 +38,10 @@ public:
 
     return true;
   }
+
   bool get(size_t num, T *buf)
   {
-    if (_used() < num) {
+    if (_used() < num || !buf) {
       return false;
     }
 
@@ -67,9 +68,10 @@ public:
 
     return true;
   }
+
   bool peek(size_t num, T *buf) const
   {
-    if (_used() < num) {
+    if (_used() < num || !buf) {
       return false;
     }
 
@@ -150,18 +152,22 @@ public:
   {
     return _size;
   }
+
   size_t available() const
   {
     return _available();
   }
+
   size_t used() const
   {
     return _used();
   }
+
   bool empty() const
   {
     return used() == 0;
   }
+
   bool full() const
   {
     return d_full;
@@ -170,7 +176,7 @@ public:
   void reset()
   {
     d_tail = d_head = 0;
-    d_full = 0;
+    d_full = false;
   }
 
 protected:
@@ -186,6 +192,7 @@ protected:
       return _size - d_head + d_tail;
     }
   }
+
   inline size_t _used() const
   {
     return _size - _available();
